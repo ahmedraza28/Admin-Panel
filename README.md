@@ -1,0 +1,3 @@
+<h1>Admin Panel Using React.js and Material-UI</h1>
+
+This repository contains the source code of the admin panel for user management. The admin panel is an integral component designed to empower administrators with robust tools and features for efficiently managing and supervising various aspects of the system. It plays a pivotal role in enhancing the overall user experience and ensuring smooth system operation.
