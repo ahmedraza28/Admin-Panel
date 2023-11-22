@@ -19,7 +19,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import '../Dash.css'
-
+import HomeIcon from '@mui/icons-material/Home';
 
 const drawerWidth = 240;
 
@@ -106,12 +106,14 @@ export default function Sidenav() {
                     justifyContent: 'center',
                   }}
                 >
-                  <MedicalServicesIcon sx={{color: 'blue'}}/>
+                  {/* <MedicalServicesIcon sx={{color: 'blue'}}/> */}
+                  <HomeIcon sx={{color: 'blue'}}/>
+                  
                 </ListItemIcon>
-                <ListItemText primary="Medicines" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
-        <ListItem className='navlist' disablePadding sx={{ display: 'block' }} onClick={() => {navigate("/donors")}}>
+        {/* <ListItem className='navlist' disablePadding sx={{ display: 'block' }} onClick={() => {navigate("/donors")}}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -128,9 +130,9 @@ export default function Sidenav() {
                 >
                   <PeopleIcon sx={{color: 'blue'}} />
                 </ListItemIcon>
-                <ListItemText primary="Donors" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Manage Users" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
         <ListItem className='navlist' disablePadding sx={{ display: 'block' }} onClick={() => {navigate("/recipients")}}>
               <ListItemButton
                 sx={{
@@ -148,7 +150,7 @@ export default function Sidenav() {
                 >
                   <EmojiPeopleIcon sx={{color: 'blue'}}/>
                 </ListItemIcon>
-                <ListItemText primary="Recipients" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Withdrawal requests" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
         <ListItem className='navlist' disablePadding sx={{ display: 'block' }} onClick={() => {navigate("/account")}}>
@@ -168,7 +170,7 @@ export default function Sidenav() {
                 >
                   <AccountBoxIcon sx={{color: 'blue'}} />
                 </ListItemIcon>
-                <ListItemText primary="Performance" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Activity Requests" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
         </List>

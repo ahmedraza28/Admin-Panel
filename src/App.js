@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Settings from "./pages/Settings";
 import Medicines from "./pages/Medicines";
 import Account from "./pages/Account";
+import AdminLogin from "./components/AdminLogin";
 
 function App() {
   return (
@@ -12,9 +13,8 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Home/>}></Route>
-      <Route exact path="/donors" element={<About/>}></Route>
+      <Route exact path="/signin" element={<AdminLogin/>}></Route>
       <Route exact path="/recipients" element={<Settings/>}></Route>
-      <Route exact path="/medicines" element={<Medicines/>}></Route>
       <Route exact path="/account" element={<Account/>}></Route>
     </Routes>
     </BrowserRouter>

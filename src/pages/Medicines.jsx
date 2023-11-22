@@ -13,7 +13,7 @@ const Medicines = () => {
             <Box sx={{display: 'flex'}}>
                 <Sidenav/>
                 <Box component="main" sx={{flexGrow: 1, p:3}}>
-                <MedicineList/>
+                {/* <MedicineList/> */}
                 </Box>
             </Box>
            

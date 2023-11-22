@@ -8,12 +8,51 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import '../Dash.css'
-import MedicationIcon from '@mui/icons-material/Medication';
-import CountUp from 'react-countup';
-import MedicineList from './medicines/MedicineList';
 import PeopleIcon from '@mui/icons-material/People';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { useNavigate } from 'react-router-dom';
+
+
 const Home = () => {
+    const [activity, setActivity] = useState([])
+    const [data, setData] = useState();
+    const navigate = useNavigate();
+
+
+
+    const totalActivity = async () => {
+        try {
+            const response = await axios.get('https://mlm-backend-mx3k.onrender.com/redemption/total-pending-redemption-requests')
+            console.log("Response", response.data.activityRequestsCount, response.data.totalMembers, response.data.withdrawalRequestsCount);
+            setActivity(response.data);
+            //   console.log("response", data);
+
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
+    //   console.log("response array", data);
+
+
+    useEffect(() => {
+        totalActivity();
+    }, []);
+
+
+    useEffect(() => {
+        if (!localStorage.getItem("adminEmail")) {
+            navigate('/signin')
+        }
+    }, []);
+
+
+
+
     return (
         <>
             <div className='bgcolor'>
@@ -23,58 +62,58 @@ const Home = () => {
                     <Sidenav />
                     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                         <Grid container spacing={2}>
-                            <Grid item xs={8}>
+                            <Grid item xs={12}>
                                 <Stack spacing={2} direction="row" >
-                                    <Card sx={{ minWidth: 49 + "%", height: 150 }} className='gradientlight'>
+                                    <Card sx={{ minWidth: 49 + "%", height: 250 }} className='gradientlight'>
                                         <CardContent>
                                             <div className='iconstyle'>
-                                                <MedicationIcon />
+                                                <PeopleIcon sx={{ width: '50px', height: '50px' }} />
                                             </div>
                                             <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
-                                                <CountUp delay={0.4} end={203} duration={0.8} /> Total Medicines Available
+                                                <Typography variant="h3" component="h2">
+                                                    No of users: <b>{activity.totalMembers}</b>
+                                                </Typography>
+
                                             </Typography>
 
                                         </CardContent>
                                     </Card>
-                                    <Card sx={{ minWidth: 49 + "%", height: 150 }} className='gradientlight'>
+                                    <Card sx={{ minWidth: 49 + "%", height: 250 }} className='gradientlight'>
                                         <CardContent>
                                             <div className='iconstyle'>
-                                                <PeopleIcon />
+                                                <EmojiPeopleIcon sx={{ width: '50px', height: '50px' }} />
                                             </div>
                                             <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
-                                                <CountUp delay={0.4} end={275} duration={0.8} /> Total Donors
+                                                <Typography variant="h3" component="h2">
+                                                    Current withdrawal requests: <b>{activity.withdrawalRequestsCount}</b>
+                                                </Typography>
                                             </Typography>
 
                                         </CardContent>
                                     </Card>
-                                </Stack>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <Stack spacing={2}>
-                                    <Card sx={{ minWidth: 49 + "%", height: 150 }} className='gradientlight'>
-                                        <CardContent>
-                                            <div className='iconstyle'>
-                                                <EmojiPeopleIcon />
-                                            </div>
-                                            <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
-                                                <CountUp delay={0.4} end={275} duration={0.8} /> Total Recipients
-                                            </Typography>
-
-                                        </CardContent>
-                                    </Card>
-
                                 </Stack>
                             </Grid>
                         </Grid>
                         <Box height={20} />
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <Card sx={{ height: 100 + "vh" }}>
-                                    <CardContent>
+                                <Card sx={{ height: 38 + "vh" }}>
+                                    <Stack spacing={2}>
+                                        <Card sx={{ minWidth: 49 + "%", height: 250 }} className='gradientlight'>
+                                            <CardContent>
+                                                <div className='iconstyle'>
+                                                    <AccountBoxIcon sx={{ width: '50px', height: '50px' }} />
+                                                </div>
+                                                <Typography variant="h5" component="div" sx={{ color: '#fff' }}>
+                                                    <Typography variant="h3" component="h2">
+                                                        Current Activities: <b>{activity.activityRequestsCount}</b>
+                                                    </Typography>
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
 
-                                        <MedicineList />
+                                    </Stack>
 
-                                    </CardContent>
                                 </Card>
                             </Grid>
 

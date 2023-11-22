@@ -19,7 +19,8 @@
 }
 .gradient{
   background: rgb(40, 34, 70);
-  background: linear-gradient(158deg, rgba(40, 34, 70, 1) 0%, rgba(30, 47, 141, 1) 100%),;
+  background: linear-gradient(158deg, rgb(91, 208, 217) 0%, rgb(84, 225, 235) 100%),;
+  /* background: linear-gradient(158deg, rgba(40, 34, 70, 1) 0%, rgba(30, 47, 141, 1) 100%),; */
 }
 .gradientlight{
   background: rgb(53, 138, 148);
@@ -33,4 +34,9 @@
 
 .navlist{
   color: blue;
+}
+
+.css-igxcx3-MuiPaper-root-MuiCard-root{
+  background-color: none;
+  box-shadow: none;
 }
