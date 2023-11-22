@@ -103,7 +103,7 @@ export default function MedicineList() {
 
   const withdrawalRequest = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/redemption/pending-redemption-requests');
+      const response = await axios.get('https://mlm-backend-mx3k.onrender.com/redemption/pending-redemption-requests');
       // console.log("API Response Data: ", response.data);
 
       setWithdrawal(response.data.pendingRequests);
@@ -139,7 +139,7 @@ export default function MedicineList() {
 
   const withdrawalStatus = async (RequestID, accepted) => {
     try {
-      let response = await fetch('http://localhost:3000/redemption/update-redemption-request-status', {
+      let response = await fetch('https://mlm-backend-mx3k.onrender.com/redemption/update-redemption-request-status', {
         method: 'POST',
         body: JSON.stringify({
           requestId: RequestID,

@@ -103,7 +103,7 @@ export default function MedicineList() {
 
   const handleActivity = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/odometer/getpending')
+      const response = await axios.get('https://mlm-backend-mx3k.onrender.com/odometer/getpending')
       console.log("Response", response);
       // setWithdrawal(response.data);
       setRows(response.data);
@@ -124,7 +124,7 @@ export default function MedicineList() {
 
   const approvalStatus = async (MemberID, PictureID, ApprovalStatus) => {
     try {
-      const response = await fetch('http://localhost:3000/odometer/updateApprovalStatus', {
+      const response = await fetch('https://mlm-backend-mx3k.onrender.com/odometer/updateApprovalStatus', {
         method: 'PUT',
         body: JSON.stringify({ MemberID, PictureID, ApprovalStatus }),
         headers: {
